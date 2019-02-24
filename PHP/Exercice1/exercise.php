@@ -1,22 +1,22 @@
 <?php
 
-$booleanTrue;
-$booleanFalse;
+$booleanTrue=true;
+$booleanFalse=false;
 
-$int;
+$int=2019;
 
-$float;
+$float=3.14;
 
-$integer;
+$integer=2;
 
-$double;
+$double=15.2;
 
-$string;
+$string="diana";
 
-$array;
+$array=['cheregi', 'raluca'];
 
-$doubleDimenssionArray;
+$doubleDimenssionArray=[['diana', 1990],['cheregi', 31, 'may']];
 
-$associativeArray;
+$associativeArray=['cheregi'=>'28', 'diana'=>'raluca'];
 
-$null;
+$null=null;
