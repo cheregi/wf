@@ -11,7 +11,7 @@ $integer=2;
 
 $double=15.2;
 
-$string="diana";
+$string='diana';
 
 $array=['cheregi', 'raluca'];
 
