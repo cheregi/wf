@@ -9,10 +9,21 @@ function generateToken() : string {
     
     return openssl_encrypt($requestId, $cipher, gethostname(), OPENSSL_ZERO_PADDING, $iv, $tag);
 }
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
 
+if (isset($_SESSION['text'])) {
+    $_SESSION['text'] = 'text';
+}else {
+    $_SESSION['test']='test';
+}
+
+session_write_close();
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $token = generateToken();
 }
+print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html>
