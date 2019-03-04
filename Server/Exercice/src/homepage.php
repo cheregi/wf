@@ -35,7 +35,7 @@ $AllArticles=$articles->fetchAll();
 
 //write html with For Loop
 foreach($AllArticles as $article) {
-//    print_r($article);
+    print_r($article);
     ?>
     <h2>
         <?php
@@ -46,21 +46,23 @@ foreach($AllArticles as $article) {
     <img src="
     <?php
     echo $article["img"];
-    ?>
+//    ?>
     ">
 
     <p>
         <?php
         echo $article["description"];
-        ?>
+//     echo "<h2>".$article{'title'}."</h2>";
+//
+//    echo "<p>".$article{'description'}."</p>";
+//  echo "<img src=".$article['img']." />";
+
+//        ?>
     </p>
 
 
 
-<!--    echo "<h2>".$article{'title'}."</h2>";-->
-<!---->
-<!--    echo "<p>".$article{'description'}."</p>";-->
-<!--    echo "<img src='$article{'img'}'>";-->
+
 
 <?php
 }?>
