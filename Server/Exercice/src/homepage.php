@@ -35,7 +35,7 @@ $AllArticles=$articles->fetchAll();
 
 //write html with For Loop
 foreach($AllArticles as $article) {
-    print_r($article);
+//    print_r($article);
     ?>
     <h2>
         <?php
