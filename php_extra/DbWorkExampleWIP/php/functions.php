@@ -16,7 +16,7 @@
 function ProcessUploadedFile($FileObj){
     $UpLoadDir = "../storage/";
 
-    var_dump($FileObj);
+//    var_dump($FileObj);
     //echo exec('whoami');
 
     //$name = basename($_FILES["image"]["name"]);

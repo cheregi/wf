@@ -1,7 +1,7 @@
 <?php 
 include 'dbconnect.php';
 
-print_r($_POST);
+//print_r($_POST);
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
@@ -11,10 +11,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	$SQL->bindParam(':USERNAME', $_POST['username'], PDO::PARAM_STR);
 	$SQL->execute();
 	$result = $SQL->fetch();
-var_dump($result);
+//var_dump($result);
 	if($result['username']) {
 
-	    echo $_POST ['password']." ".$result['password'];
+//	    echo $_POST ['password']." ".$result['password'];
 
 		  if(password_verify($_POST['password'], $result['password'])){
                             // Password is correct, so start a new session
@@ -29,7 +29,7 @@ var_dump($result);
                             header("location: list.php");		
 						}
 	                     else {
-	                         echo "i'm here";
+//	                         echo "i'm here";
                             // Display an error message if password is not valid
                             $password_err = "The password you entered was not valid.";
 

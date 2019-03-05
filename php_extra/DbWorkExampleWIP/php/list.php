@@ -8,7 +8,7 @@ include 'header.php';
 $SQL = $connection->prepare('SELECT * FROM article');
 $SQL->execute();
 $SQL->setFetchMode(PDO::FETCH_ASSOC);
-print_r($SQL->rowCount());
+//print_r($SQL->rowCount());
 $result = $SQL->fetchAll();
 
 //print_r($_SESSION);
