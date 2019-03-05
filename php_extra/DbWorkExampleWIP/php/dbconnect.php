@@ -20,10 +20,21 @@ try {
 
 
 //Function returns an Array with results from DB
-function GetFromDBWithId($Id,$connectionIn) {
 
+function GetFromDBWithId($Id,$connectionIn) {
+	// $result=[];
+	$SQL = $connectionIn->prepare('SELECT * FROM article WHERE id=:theId');
+	$SQL->bindParam(':theId', $Id, PDO::PARAM_STR);
+	$SQL->execute();
+	$SQL->setFetchMode(PDO::FETCH_ASSOC);
+
+	$result = $SQL->fetchAll();
+//	print_r($result);
+	return $result;
 }
 
+//
+GetFromDBWithId('',$connection);
 
 
 

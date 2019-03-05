@@ -6,35 +6,78 @@ include 'functions.php';
 if($_SESSION["loggedin"] == true) {
 	
 	
-	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//
+//
+//		//FillIn SQL with the Bind params :TITLE :DESCRIPTION :IMG
+//        if(!empty($_FILES['image'])) {
+//		$SQL = $connection->prepare("INSERT INTO article (title,description,img) VALUES (:TITLE,:DESCRIPTION :IMG)");
+//		$SQL->bindParam(':TITLE', $_POST['title'], PDO::PARAM_STR);
+//		$SQL->bindParam(':DESCRIPTION', $_POST['description'], PDO::PARAM_STR);
+//        $SQL->bindParam(':IMG', $_POST['img'], PDO::PARAM_STR);
+//
+//
+//			$FileNameToDB = ProcessUploadedFile($_FILES['image']);
+//
+//
+//		} else {
+//            $SQL = $connection->prepare("ADD article SET img =:IMG WHERE id =:ID");
+//        }
+//
+//
+//
+//
+//if($SQL->execute()) {
+//
+//	//var_dump($connection->lastInsertId());
+//	header("Location: view.php?id=".$connection->lastInsertId().""); /* Redirect browser */
+//}
+//else {
+//echo "Error in Insert";
+//print_r($SQL->errorInfo());
+//$SQL->debugDumpParams();
+//var_dump($_POST);
+//
+//}
+//
+//}
 
 
-		//FillIn SQL with the Bind params :TITLE :DESCRIPTION :IMG
-		$SQL = $connection->prepare('');
-		$SQL->bindParam(':TITLE', $_POST[title], PDO::PARAM_STR);
-		$SQL->bindParam(':DESCRIPTION', $_POST[description], PDO::PARAM_STR);
-		
-		if(!empty($_FILES[image])) {
-			$FileNameToDB = ProcessUploadedFile($_FILES[image]);
-			$SQL->bindParam(':IMG', $FileNameToDB, PDO::PARAM_STR);
-		}
-		
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//        var_dump($_POST);
+//AddToDB //////////////////////////////////////
+        $SQL = $connection->prepare('INSERT INTO article (title, description) VALUES (:TITLE, :DESCRIPTION)');
+
+        $SQL->bindParam(':TITLE', $_POST['title'], PDO::PARAM_STR);
+        $SQL->bindParam(':DESCRIPTION', $_POST['description'], PDO::PARAM_STR);
+        $SQL->execute();
+       $myNewId=$connection->lastInsertId();
+//ProcessFile
+
+        if(!empty($_FILES)) {
+            var_dump($_FILES);
+            $FileNameToDB = ProcessUploadedFile($_FILES['image']);
+            $SQL = $connection->prepare('UPDATE article SET img=:IMG WHERE id=:ID');
+            $SQL->bindParam(':IMG', $FileNameToDB, PDO::PARAM_STR);
+            $SQL->bindParam(':ID', $myNewId, PDO::PARAM_STR);
+            $SQL->execute();
+        };
+
+        if ($SQL->execute()) {
+            header("Location: view.php?id=$myNewId"); /* Redirect browser */
+        } else {
+            echo "Error in Insert";
+            print_r($SQL->errorInfo());
+            $SQL->debugDumpParams();
+            var_dump($_POST);
+        }
+
+    }
 
 
-if($SQL->execute()) {
-	
-	//var_dump($connection->lastInsertId());
-	header("Location: view.php?id=".$connection->lastInsertId().""); /* Redirect browser */
-}
-else {
-echo "Error in Insert";
-print_r($SQL->errorInfo());
-$SQL->debugDumpParams();
-var_dump($_POST);
 
-}
 
-}
 
 else {
 include 'header.php';
