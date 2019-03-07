@@ -9,4 +9,4 @@ session_start();
 echo "name for session".$_GET['nameforsession'];
 $_SESSION['nameforsession'] =$_GET['nameforsession'];
 
-$_SESSION['anotherparameter'] ="something";
+$_SESSION['anotherparameter'] =$_GET["something"];

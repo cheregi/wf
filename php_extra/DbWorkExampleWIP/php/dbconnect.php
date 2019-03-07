@@ -32,9 +32,19 @@ function GetFromDBWithId($Id,$connectionIn) {
 //	print_r($result);
 	return $result;
 }
-
+//function GetData($Id,$connectionIn) {
+//	// $result=[];
+//	$SQL = $connectionIn->prepare('SELECT * FROM projects WHERE id=:theId');
+//	$SQL->bindParam(':theId', $Id, PDO::PARAM_STR);
+//	$SQL->execute();
+//	$SQL->setFetchMode(PDO::FETCH_ASSOC);
 //
-GetFromDBWithId('',$connection);
+//	$result = $SQL->fetchAll();
+////	print_r($result);
+//	return $result;
+//}
+//
+//GetFromDBWithId('',$connection);
 
 
 

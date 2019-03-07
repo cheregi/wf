@@ -15,8 +15,26 @@ $result = $SQL->fetchAll();
 //var_dump($result);
 //showing content/////////////////////////////////////////////////////////////////
 if (isset($_SESSION['loggedin'])) {
-    if ($_SESSION["loggedin"] == true) echo "<div class='row'><p><a href='new.php'> new.php</a> </p></div>";
+    if ($_SESSION["loggedin"] == true){
+        echo "<div class='row'><p><a href='new.php'> new.php</a> </p></div>";
+    }
+
+
+?>
+<div class="wrapper">
+<!--        <h2>Logout</h2>-->
+        <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Logout">
+            </div>
+        </form>
+    </div>
+<?php
+
 }
+
+
+
 
 
 for ($count = 0; $count < count($result); $count++) {
