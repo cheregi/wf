@@ -1,4 +1,5 @@
 <?php
+
 namespace Model;
 
 class User
@@ -8,16 +9,12 @@ class User
     protected $password;
     protected $salt;
     protected $username;
-    
+
     public function getId()
     {
         return $this->id;
     }
 
-    public function getRoles()
-    {
-        return $this->roles;
-    }
 
     public function getPassword()
     {
@@ -34,12 +31,36 @@ class User
         return $this->username;
     }
 
-    public function setRoles($roles)
+////////////////////////////////////////////   modification for exo_2
+    public function setRoles(array $roles)
     {
-        $this->roles = $roles;
+        $this->roles = [];
+        foreach ($roles as $role) {
+            $this->addRole($role);
+        }
         return $this;
     }
 
+    public function addRole(Role $role)
+    {
+        if (!in_array($role, $this->roles)) {
+            array_push($this->roles, $role);
+        }
+        return $this;
+    }
+
+    public function getRoles()
+    {
+        $labels = [Role::ROLE_USER];
+        foreach ($this->roles as $role) {
+            array_push($labels, $role->getLabel());
+        }
+        return array_unique($labels);
+//
+    }
+
+
+///////////////////////////////////////////////////////
     public function setPassword($password)
     {
         $this->password = $password;
