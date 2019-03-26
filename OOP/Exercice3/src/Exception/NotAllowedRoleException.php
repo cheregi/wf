@@ -13,7 +13,7 @@ class NotAllowedRoleException extends \RuntimeException
         $tmpMessage = 'The role ' . $label . ' is not allowed';
         $tmpMessage .= ' only ' . implode(',', $roles) . ' are allowed ';
         $tmpMessage .= $message;
-        parent::__construct($message, $code, $previous);
+        parent::__construct($tmpMessage, $code, $previous);
     }
 
 
