@@ -33,7 +33,7 @@ class Role
     /**
      * @return mixed
      */
-    public function getLabel(): string
+    public function getLabel(): ?string
     {
         return $this->label;
     }
@@ -41,6 +41,7 @@ class Role
     /**
      * @param mixed $label
      */
+//    public function setLabel(string $label): Role
     public function setLabel(string $label): void
     {
         $this->label = $label;
