@@ -1,0 +1,21 @@
+{
+  "name": "numericall/src",
+  "description": "This is a composer project",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "cheregi",
+      "email": "cheregi.diana@yahoo.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "symfony/security": "^v4.2@stable"
+  },
+  "autoload": {
+    "psr-4": {
+      "Model\\": "Model/",
+      "Exception\\": "Exception/"
+    }
+  }
+}
